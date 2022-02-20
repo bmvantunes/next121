@@ -4,11 +4,11 @@ export default function Hello({props} : any) {
     return <pre>{JSON.stringify(props, null, 4)}POIS</pre>
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = () => {
     return {
         props: {
-            a: new Date(),
-            b: await Promise.resolve(5)
+            a: new Date().toISOString(),
+            b:  5
         }
     }
 }

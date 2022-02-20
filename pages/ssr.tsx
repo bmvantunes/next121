@@ -7,7 +7,7 @@ export default function Hello({props} : any) {
 export const getServerSideProps: GetServerSideProps = async () => {
     return {
         props: {
-            a: new Date(),
+            c: new Date().toISOString(),
             b: await Promise.resolve(5)
         }
     }
