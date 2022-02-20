@@ -1,14 +1,19 @@
-import { GetServerSideProps } from "next"
+import { GetServerSideProps } from 'next';
 
-export default function Hello({props} : any) {
-    return <pre>{JSON.stringify(props, null, 4)}POIS</pre>
+export default function SSR(props: unknown) {
+  return (
+    <>
+      <pre>Server Side Rendering {JSON.stringify(props, null, 4)}</pre>
+    </>
+  );
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-    return {
-        props: {
-            c: new Date().toISOString(),
-            b: await Promise.resolve(5)
-        }
-    }
-}
+
+  return {
+    props: {
+      versions: await Promise.resolve(process.versions),
+      date: new Date().toISOString(),
+    },
+  };
+};

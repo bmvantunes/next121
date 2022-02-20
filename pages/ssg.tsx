@@ -1,9 +1,5 @@
 import { GetStaticProps } from "next"
 
-export default function Hello({props} : any) {
-    return <pre>{JSON.stringify(props, null, 4)}POIS</pre>
-}
-
 export const getStaticProps: GetStaticProps = () => {
     return {
         props: {
@@ -11,4 +7,13 @@ export const getStaticProps: GetStaticProps = () => {
             b:  5
         }
     }
+}
+
+
+export default function SSR(props: unknown) {
+  return (
+    <>
+      <pre>Server Side Rendering {JSON.stringify(props, null, 4)}</pre>
+    </>
+  );
 }
